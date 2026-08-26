@@ -19,8 +19,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install supabase requests tiktok-uploader
-          playwright install # تثبيت المتصفح المخفي المطلوب للرفع
+         pip install supabase requests tiktok-uploader
+         playwright install --with-deps # تثبيت المتصفح المخفي المطلوب للرفع
 
       - name: Run script
         env:
