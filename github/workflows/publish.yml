@@ -2,7 +2,6 @@ name: Quran Auto Publisher
 
 on:
   schedule:
-    # سيتم تشغيل البوت يومياً في الساعة 9:00 صباحاً بتوقيت جرينتش
     - cron: '0 9 * * *'
   workflow_dispatch: 
 
@@ -20,13 +19,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install supabase requests
+          pip install supabase requests tiktok-uploader
+          playwright install # تثبيت المتصفح المخفي المطلوب للرفع
 
       - name: Run script
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TIKTOK_SESSION_ID: ${{ secrets.TIKTOK_SESSION_ID }}
         run: |
           python main.py
